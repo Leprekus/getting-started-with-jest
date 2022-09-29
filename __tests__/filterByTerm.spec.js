@@ -1,5 +1,5 @@
 function filterByTerm (input, str){
-    const filtered = input.filter(x => x.url.includes(str))
+    const filtered = input.filter(x => x.url.toLowerCase().includes(str.toLowerCase()))
     return filtered;
 };
 
@@ -12,5 +12,8 @@ describe('Filter function', () => {
         ]
         const output = [{ id: 3, url: "https://www.link3.dev" }]
         expect(filterByTerm(input, 'link')).toEqual(output)
+
+        expect(filterByTerm(input, 'LINK')).toEqual(output)
+
     });
 });
